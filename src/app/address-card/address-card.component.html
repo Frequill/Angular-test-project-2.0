@@ -1,0 +1,23 @@
+<div class = "address-card"> 
+    <h1 class = "name">{{user.name}}</h1>
+    <h2 class = "title">{{user.title}}</h2>
+    <button *ngIf="isCollapsed" (click)="toggleCollapse()"> Expand </button> <!-- (click) within parentheses means that the click is handled by Angular itself rather than the browser/the Html code!-->
+    <button *ngIf="!isCollapsed" (click)="toggleCollapse()"> Collapse </button>
+        <div *ngIf="!isCollapsed"> 
+        <p class = "address">{{user.address}}</p>
+        <div class = "phone" *ngIf="user.phone.length > 0">
+        <p>Phone:</p>
+        <p *ngFor="let phoneNumber of user.phone">{{phoneNumber}}</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- In this example we loop through each phone number from the "user" object 
+created in the constructior on address-card.component.ts! 
+
+The loop syntax is: <p *ngFor="let thing of things">{{thing}}
+so each phoneNumber in the array is a "THING" that we print for each
+"Thing" that can be found inside said array! 
+
+We also use an if statment to hide the "phone" div IF it is empty -->
